@@ -6,7 +6,9 @@
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// Create an Array with five numbers
+// Sum number one and five using their indices
+// Display the sum
 ///  OBJECTIVE /// 
 
 //////////////////////
