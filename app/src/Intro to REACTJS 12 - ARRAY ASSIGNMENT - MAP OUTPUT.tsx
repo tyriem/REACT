@@ -31,6 +31,11 @@ let newArray = oldArray.filter((element, index) => {
 
 
 
+
+
+
+
+
 /// RENDER ///
 function App() {
   return (
@@ -42,13 +47,10 @@ function App() {
           
             <div>
               <div>{"AN ARRAY: " + oldArray}</div>
-              {/* TO RUN CODE WITHIN AN HTML RENDER WE WRAP IT IN CURLY BRACKETS */}
-              {/* WE NEVER DO REAL CODE CHANGES INSIDE OF THE RENDER, ONLY DRAWING */}
-              {/* TO RENDER A LIST WE MAP THROUGH AN ARRAY */}
-              { newArray.map((element) => {
-                return (<div>{element}</div>)
-              })}
-              </div>
+              
+              <div>{"AN ARRAY FILTERED FOR ELEMENTS LESS THAN 300: " + newArray}</div>
+              
+            </div>
           
 
       </header>
