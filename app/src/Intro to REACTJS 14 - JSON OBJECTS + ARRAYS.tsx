@@ -50,7 +50,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         
-
+        
        <div>
        {people.map((person) => {
           return (
@@ -60,6 +60,8 @@ function App() {
                 <div>Name: {person.name}</div>
                 <div>Address Street: {person.address.street}</div>
                 <div>Address City: {person.address.city}</div>
+
+                <br></br>
               </div>
             
             ); })}
