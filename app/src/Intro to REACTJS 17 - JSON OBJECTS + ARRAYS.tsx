@@ -44,6 +44,12 @@ id: 2
 
 console.log(people);
 
+// GET ALL ENTRIES WITH A PARTICULAR VALUE
+// EX. VALUE OF 'WASHINGTON' UNDER 'CITY'
+const washingtonPeople = people.filter(
+  (p) => p.address.city === "washington"
+);
+
 /// RENDER ///
 function App() {
   return (
