@@ -1,19 +1,20 @@
 /// AUTHOR: TMRM
 /// CONTRIBUTORS:   
-/// PROJECT: Intro to REACT 7 - ARRAY MAP
+/// PROJECT: Intro to REACT 13 - ARRAY FIND
 /// VER: 1.0
 /// DATE: 07-XX-2021
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// FINDING ELEMENT OF AN ARRAY
 ///  OBJECTIVE /// 
 
 ///////////////////
-///    FIND    ///
-///     ARRAYS ///
-//////////////////
+///    FIND     ///
+///   ARRAYS    ///
+///////////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 

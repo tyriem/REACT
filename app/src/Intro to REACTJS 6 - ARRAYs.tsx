@@ -6,13 +6,14 @@
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// DATASTRUCTURES IN REACT
 ///  OBJECTIVE /// 
 
 //////////////////
 ///   ARRAYS   ///
 //////////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 

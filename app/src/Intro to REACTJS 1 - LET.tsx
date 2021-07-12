@@ -6,13 +6,14 @@
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// USE let, const, & var to declare variables
 ///  OBJECTIVE /// 
 
 ////////////
 /// LETs ///
 ////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 

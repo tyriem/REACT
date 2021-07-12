@@ -6,7 +6,7 @@
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// USE IF ELSE-IF ELSE STATEMENT TO SET VALUE
 ///  OBJECTIVE /// 
 
 ///////////////
@@ -15,6 +15,7 @@
 ///  ELSE   ///
 ///////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 

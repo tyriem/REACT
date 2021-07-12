@@ -6,15 +6,17 @@
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// DEFINE A VAR AND RENDER IT
 ///  OBJECTIVE /// 
 
 //////////////////////
 /// VARs + STRINGs ///
 //////////////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+
 
 /// LOGIC ///
 let aString = "REACT";

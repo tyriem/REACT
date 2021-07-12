@@ -6,15 +6,17 @@
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// USE IF-ELSE STATEMENT TO CONTROL VAR
 ///  OBJECTIVE /// 
 
 ///////////////
 /// IF-ELSE ///
 ///////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+
 
 /// LOGIC ///
 const isHappy = true;

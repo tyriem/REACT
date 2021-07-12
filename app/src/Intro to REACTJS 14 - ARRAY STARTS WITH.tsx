@@ -1,12 +1,12 @@
 /// AUTHOR: TMRM
 /// CONTRIBUTORS:   
-/// PROJECT: Intro to REACT 7 - ARRAY MAP
+/// PROJECT: Intro to REACT 14 - ARRAY STARTS WITH
 /// VER: 1.0
 /// DATE: 07-XX-2021
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// FILTERING AN ARRAY TO FIND AN ELEMENT THAT STARTS WITH X
 ///  OBJECTIVE /// 
 
 /////////////////////////
@@ -14,6 +14,7 @@
 ///     ARRAYS        ///
 /////////////////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 

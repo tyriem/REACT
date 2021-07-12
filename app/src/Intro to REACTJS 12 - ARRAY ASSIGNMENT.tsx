@@ -1,6 +1,6 @@
 /// AUTHOR: TMRM
 /// CONTRIBUTORS:   
-/// PROJECT: Intro to REACT 7 - ARRAY MAP
+/// PROJECT: Intro to REACT 12 - ARRAY ASSIGNMENT - FILTER
 /// VER: 1.0
 /// DATE: 07-XX-2021
 
@@ -10,10 +10,13 @@
 ///  OBJECTIVE /// 
 
 //////////////////////
-///    FILTER     ///
+///     ARRAY      ///
+///   ASSIGNMENT   ///
+///     FILTER     ///
 ///     ARRAYS     ///
 //////////////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 

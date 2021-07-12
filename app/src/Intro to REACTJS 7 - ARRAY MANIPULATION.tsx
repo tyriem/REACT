@@ -6,6 +6,7 @@
 
 
 ///  OBJECTIVE /// 
+// MANIPULATING AN ARRAY
 // Create an Array with five numbers
 // Sum number one and five using their indices
 // Display the sum
@@ -16,6 +17,7 @@
 ///     ARRAYS     ///
 //////////////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 

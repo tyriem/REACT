@@ -1,12 +1,12 @@
 /// AUTHOR: TMRM
 /// CONTRIBUTORS:   
-/// PROJECT: Intro to REACT 7 - ARRAY MAP
+/// PROJECT: Intro to REACT 17 - JSON OBJECTS + ARRAYS
 /// VER: 1.0
 /// DATE: 07-XX-2021
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// JSON OBJECTS & ARRAYS
 ///  OBJECTIVE /// 
 
 //////////////////
@@ -16,6 +16,7 @@
 ///   ARRAYS   ///
 //////////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 

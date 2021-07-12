@@ -6,22 +6,22 @@
 
 
 ///  OBJECTIVE /// 
-// LOREM IPSUM
+// USE RETURNS TO OUTPUT SELECTED VALUES
 ///  OBJECTIVE /// 
 
 //////////////
 /// RETURN ///
 //////////////
 
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 /// LOGIC ///
 const isHappy = true;
     let face = "none"
-
-  //NB: IN JS YOU DON"T HAVE TO DECLARE THE CHECK FOR TRUE OR FALSE
-  //EX: You can use: if (isHappy === true;) or if (isHappy)
+  // NB: IN JS YOU DON"T HAVE TO DECLARE THE CHECK FOR TRUE OR FALSE
+  // EX: You can use: if (isHappy === true;) or if (isHappy)
     if ( isHappy ) {
       face = "smiling"
     } else {
@@ -38,7 +38,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         
-
+        {/* NB: WHEN YOU RETURN YOU CAN ONLY RETURN ONE ELEMENT OVERALL NOT MULTIPLE ONES
+        // WE GET AROUND THIS BY WRAPPING OUR RETURNED VALUES IN ONE TOP-LEVEL DIV TAG */}
           return (
             <div>
               <div>My Face is {face}</div>
