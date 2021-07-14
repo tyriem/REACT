@@ -66,6 +66,7 @@ console.log(classArray);
 
 
 // GET ALL OF THE STUDENTS WHOSE CLASS LEVEL = BEG
+// FILTER class.level as BEG
 const classBeginners = classArray.filter(
   (p) => p.class.level === "BEG"
 );
@@ -80,9 +81,11 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <div>
-        
+        {/* WRAPPING DIV */}
        <div>
+         {/* H1 HEADER FOR ARRAY: classArray*/}
          <h1>ARRAY OF ALL CLASSMATES:</h1>
+         {/* MAP TO OUTPUT ELEMENTS OF ARRAY: classArray */}
        {classArray.map((classmate) => {
           return (
             
@@ -102,7 +105,9 @@ function App() {
        </div>
 
        <div>
+         {/* H1 HEADER FOR ARRAY: classBeginners*/}
        <h1>ARRAY OF CLASSMATES IN THE BEGINNERS CLASS:</h1>
+       {/* MAP FOR ARRAY: classBeginners*/}
        {classBeginners.map((classmate) => {
           return (
             
