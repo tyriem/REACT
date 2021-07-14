@@ -22,7 +22,7 @@ import './App.css';
 const anArray = [1, 2, 3, 4]
 
 
-// FOR EACH IS IDENTICAL TO FOREACH BUT DOES NOT CREATE A NEW ARRAY IN THE PROCESS
+// FOR EACH IS IDENTICAL TO MAP BUT DOES NOT CREATE A NEW ARRAY IN THE PROCESS
 anArray.forEach((element) => {
   console.log("array entry", element);
 });

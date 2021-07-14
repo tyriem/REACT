@@ -26,207 +26,190 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-/// LOGIC ///
 
-//NB:  JSON OBJECT - SET OF KEYED VALUES WE ACCESS VIA THE KEY AND CAN MANIPULATE
-// JSON OBJECT: classArray = { "Math": [{ "firstName": "John", "lastName": "Doe", "class": "BEG" }, { "firstName": "Jane", "lastName": "Doe", "class": "ADV" }], "Science": [{ "firstName": "John", "lastName": "Doe", "class": "BEG" }, { "firstName": "Jane", "lastName": "Doe", "class": "ADV" }] }
-const classArray = [
-  {
-    student: {
-      first: "Aaron",
-      last: "Saunders",
+export default function App() {
+  // create student array as state because we want changes
+  // to cause screen to re draw
+  const [studentArray, setStudentArray] = React.useState([
+    {
+      studentFirstName: 'Aaron',
+      studentLastName: 'Saunders',
+      level: 'ADV',
+      class: 'Math',
+      id: 1
     },
-    class: {
-      level: "ADV",
-      subject: "Math",
+    {
+      studentFirstName: 'Bernie',
+      studentLastName: 'Michael',
+      level: 'BEG',
+      class: 'Math',
+      id: 2
     },
-    id: 1
-  },
-  {
-    student: {
-      first: "Barry",
-      last: "Michael",
-    },
-    class: {
-      level: "BEG",
-      subject: "Math",
-    },
-    id: 2
-  },
-  {
-    student: {
-      first: "Carey",
-      last: "Smith",
-    },
-    class: {
-      level: "BEG",
-      subject: "Math",
-    },
-    id: 3
-  },
-];
-
-console.log(classArray);
+    {
+      studentFirstName: 'Casey',
+      studentLastName: 'Smith',
+      level: 'BEG',
+      class: 'Math',
+      id: 3
+    }
+  ]);
 
 
-// GET ALL OF THE STUDENTS WHOSE CLASS LEVEL = BEG
-// FILTER class.level as BEG
-const classBeginners = classArray.filter(
-  (p) => p.class.level === "BEG"
-);
-
-console.log(classBeginners);
-
-// GET ALL OF THE STUDENTS WHOSE CLASS LEVEL = ADV
-// FILTER class.level as ADV
-const classAdvanced = classArray.filter(
-  (p) => p.class.level === "ADV"
-);
-
-console.log(classAdvanced);
-
-
-
-
-
-/// RENDER ///
-
-function App() {
-
-  const [ setClassArray] = React.useState();
-  const [studentInput, setStudentInput] = React.useState();
-
-  const [first, setFirst] = React.useState();
-  const [last, setLast] = React.useState();
-  const [level, setLevel] = React.useState();
-  const [subject, setSubject] = React.useState();
-  const [id, setId] = React.useState();
+  // function that is called when I click on the add button
+  // for the name input field,  it will add the student to the
+  // array
+  const handleBtnClick = student => {
+    // javascript spread operator
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+    setStudentArray([...studentArray, student]);
+  };
 
   
-    const handleFirstInput = (event) => {
-      debugger;
-      setFirst(event.target.value);
-    };
-    
-    const handleLastInput = (event) => {
-      debugger;
-      setLast(event.target.value);
-    };
-    
-    const handleLevelInput = (event) => {
-      debugger;
-      setLevel(event.target.value);
-    };
-    
-    const handleSubjectInput = (event) => {
-      debugger;
-      setSubject(event.target.value);
-    };
-    
-    const handleIdInput = (event) => {
-      debugger;
-      setId(event.target.value);
-    };
-
-    const handleBtnClick = () => {
-      setClassArray([...classArray, studentInput]);
-    };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div>
-        {/* WRAPPING DIV */}
-       <div>
+    <>
+      <FormEntry handleBtnClick={handleBtnClick} />
 
-       {/* H1 HEADER FOR Form */}
-       <h1>FORM FOR ADDING STUDENTS</h1>
-        <input placeholder="First Name" value={first|| ''} onChange={handleFirstInput} />
-        <input placeholder="Last Name" value={last|| ''} onChange={handleLastInput} />
-        <input placeholder="Class Level" value={level|| ''} onChange={handleLevelInput} />
-        <input placeholder="Class Subject" value={subject|| ''} onChange={handleSubjectInput} />
-        <input placeholder="ID" value={id|| ''} onChange={handleIdInput} />
-        <button onClick={() => handleBtnClick()}>SUBMIT</button>
-      
+      <ListDisplay listData={studentArray} />
+    </>
+  );
+}
 
-         {/* H1 HEADER FOR ARRAY: classArray*/}
-         <h1>ARRAY OF ALL CLASSMATES:</h1>
-         {/* MAP TO OUTPUT ELEMENTS OF ARRAY: classArray */}
-       {classArray.map((classmate) => {
-          return (
-            
-              <div key = {classmate.id}>
-                <div>id: {classmate.id}</div>
-                <div>First Name: {classmate.student.first}</div>
-                <div>Last Name: {classmate.student.last}</div>
-                <div>Class Subject: {classmate.class.subject}</div>
-                <div>Class Level: {classmate.class.level}</div>
 
-                <br></br>
+/////////////////////////////////////////////////
 
-              </div>
-            
-            ); })}
+function FormEntry(props) {
+  // this is where the new student name will be contained as
+  // user is typing it, you call setStudentInput to update the
+  // studentInput
+  const [studentFirstInput, setStudentFirstInput] = React.useState();
 
-       </div>
+  const [studentLastInput, setStudentLastInput] = React.useState();
 
-       <div>
-         {/* H1 HEADER FOR ARRAY: classBeginners*/}
-       <h1>ARRAY OF CLASSMATES IN THE BEGINNERS CLASS:</h1>
-       {/* MAP FOR ARRAY: classBeginners*/}
-       {classBeginners.map((classmate) => {
-          return (
-            
-              <div key = {classmate.id}>
-                <div>id: {classmate.id}</div>
-                <div>First Name: {classmate.student.first}</div>
-                <div>Last Name: {classmate.student.last}</div>
-                <div>Class Subject: {classmate.class.subject}</div>
-                <div>Class Level: {classmate.class.level}</div>
+  const [studentClassInput, setStudentClassInput] = React.useState();
 
-                <br></br>
+  const [studentLevelInput, setStudentLevelInput] = React.useState();
 
-              </div>
+  var [counter, setCounter] = React.useState(3);
 
-              
-            
-            ); })}
+  return (
+    <div style={{ marginTop: 10, padding: 12, border: 'black 1px solid' }}>
+      <p>
+        <input
+          placeholder="Student First Name"
+          value={studentFirstInput || ''}
+          onChange={event => setStudentFirstInput(event.target.value)}
+        />
+      </p>
 
-       </div>
+      <p>
+        <input
+          placeholder="Student Last Name"
+          value={studentLastInput || ''}
+          onChange={event => setStudentLastInput(event.target.value)}
+        />
+      </p>
 
-       <div>
-         {/* H1 HEADER FOR ARRAY: classAdvanced*/}
-       <h1>ARRAY OF CLASSMATES IN THE ADVANCED CLASS:</h1>
-       {/* MAP FOR ARRAY: classAdvanced*/}
-       {classAdvanced.map((classmate) => {
-          return (
-            
-              <div key = {classmate.id}>
-                <div>id: {classmate.id}</div>
-                <div>First Name: {classmate.student.first}</div>
-                <div>Last Name: {classmate.student.last}</div>
-                <div>Class Subject: {classmate.class.subject}</div>
-                <div>Class Level: {classmate.class.level}</div>
+      <p>
+        <input
+          placeholder="Student Class"
+          value={studentClassInput || ''}
+          onChange={event => setStudentClassInput(event.target.value)}
+        />
+      </p>
 
-                <br></br>
+      <p>
+        <input
+          placeholder="ID"
+          value={++counter || ''}
+          onChange={event => setCounter(event.target.value)}
+          disabled
+        />
+      </p>
 
-              </div>
+      <p>
+        CLASS LEVEL: &nbsp;
+        <select
+          value={studentLevelInput || ''}
+          onChange={event => setStudentLevelInput(event.target.value)}
+        >
+          <option value={''}>SELECT A LEVEL </option>
+          <option value={'BEG'}>BEG</option>
+          <option value={'ADV'}>ADV</option>
+        </select>
+      </p>
 
-              
-            
-            ); })}
-
-       </div>
-
-       </div>
-          
-
-      </header>
+      <div>
+        {/* // when button clicked, pass the student as a value to the 
+        // props.handleBtnClick function, the appropriate action is 
+        // then taken, see App.js function for additional information */}
+        <button
+          onClick={() =>
+            props.handleBtnClick(
+              {
+                studentFirstName: studentFirstInput,
+                studentLastName: studentLastInput,
+                class: studentClassInput,
+                level: studentLevelInput,
+                id: counter,
+              },
+              setCounter(counter)
+            )
+          }
+        >
+          SUBMIT
+        </button>
+        &nbsp;
+      </div>
     </div>
   );
 }
 
-export default App;
+/////////////////////////////////////////////////
+
+function ListDisplay(props) {
+  //
+
+  const [classFilter, setClassFilter] = React.useState('ALL');
+
+  const renderList = () => {
+    // if there is a value other than 'ALL' passed in as classFilter, then
+    // use that value to filter the list... then render the
+    // filtered list
+    if (classFilter !== 'ALL') {
+      const filteredList = props.listData?.filter(s =>
+        s.class.startsWith(classFilter)
+      );
+      return filteredList?.map(s => (
+        <li key= {s.id}>
+          {s.studentFirstName} : {s.studentLastName} : {s.class} : {s.level} : {s.id}
+        </li>
+      ));
+    } else {
+      // if the value passed in is ALL, then use
+      // the original list
+      return props.listData?.map(s => (
+        <li key= {s.id}>
+          {s.studentFirstName} : {s.studentLastName} : {s.class} : {s.level} : {s.id}
+        </li>
+      ));
+    }
+  };
+
+  return (
+    <div style={{ marginTop: 10, padding: 12, border: 'black 1px solid' }}>
+      Student List{' '}
+      <select
+        value={classFilter}
+        onChange={e => setClassFilter(e.target.value)}
+      >
+        <option value={'ALL'}>ALL</option>
+        <option value={'BEG'}>BEG</option>
+        <option value={'ADV'}>ADV</option>
+      </select>
+      <ul>{renderList()}</ul>
+    </div>
+  );
+}
 
 /////////////////////////////////////////////////
