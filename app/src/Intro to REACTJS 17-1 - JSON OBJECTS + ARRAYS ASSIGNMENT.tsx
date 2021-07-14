@@ -19,13 +19,16 @@
 ///   ARRAYS   ///
 //////////////////
 
+/// IMPORTS ///
+
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 /// LOGIC ///
 
-// JSON OBJECT - SET OF KEYED VALUES WE ACCESS VIA THE KEY AND CAN MANIPULATE
+//NB:  JSON OBJECT - SET OF KEYED VALUES WE ACCESS VIA THE KEY AND CAN MANIPULATE
+// JSON OBJECT: classArray
 const classArray = [
   {
     student: {
