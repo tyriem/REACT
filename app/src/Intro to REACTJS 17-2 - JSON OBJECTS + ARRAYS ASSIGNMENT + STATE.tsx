@@ -84,9 +84,53 @@ const classAdvanced = classArray.filter(
 
 console.log(classAdvanced);
 
+
+
+
+
 /// RENDER ///
 
 function App() {
+
+  const [ setClassArray] = React.useState();
+  const [studentInput, setStudentInput] = React.useState();
+
+  const [first, setFirst] = React.useState();
+  const [last, setLast] = React.useState();
+  const [level, setLevel] = React.useState();
+  const [subject, setSubject] = React.useState();
+  const [id, setId] = React.useState();
+
+  
+    const handleFirstInput = (event) => {
+      debugger;
+      setFirst(event.target.value);
+    };
+    
+    const handleLastInput = (event) => {
+      debugger;
+      setLast(event.target.value);
+    };
+    
+    const handleLevelInput = (event) => {
+      debugger;
+      setLevel(event.target.value);
+    };
+    
+    const handleSubjectInput = (event) => {
+      debugger;
+      setSubject(event.target.value);
+    };
+    
+    const handleIdInput = (event) => {
+      debugger;
+      setId(event.target.value);
+    };
+
+    const handleBtnClick = () => {
+      setClassArray([...classArray, studentInput]);
+    };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -94,6 +138,16 @@ function App() {
         <div>
         {/* WRAPPING DIV */}
        <div>
+
+       
+       <h1>FORM FOR ADDING STUDENTS</h1>
+        <input placeholder="First Name" value={first|| ''} onChange={handleFirstInput} />
+        <input placeholder="Last Name" value={last|| ''} onChange={handleLastInput} />
+        <input placeholder="Class Level" value={level|| ''} onChange={handleLevelInput} />
+        <input placeholder="Class Subject" value={subject|| ''} onChange={handleSubjectInput} />
+        <input placeholder="ID" value={id|| ''} onChange={handleIdInput} />
+        <button onClick={() => handleBtnClick()}>SUBMIT</button>
+      
 
          {/* H1 HEADER FOR ARRAY: classArray*/}
          <h1>ARRAY OF ALL CLASSMATES:</h1>

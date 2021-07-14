@@ -27,9 +27,15 @@ import './App.css';
 
 /// LOGIC ///
 
-//NB:  JSON OBJECT - SET OF KEYED VALUES WE ACCESS VIA THE KEY AND CAN MANIPULATE
-// JSON OBJECT: classArray = { "Math": [{ "firstName": "John", "lastName": "Doe", "class": "BEG" }, { "firstName": "Jane", "lastName": "Doe", "class": "ADV" }], "Science": [{ "firstName": "John", "lastName": "Doe", "class": "BEG" }, { "firstName": "Jane", "lastName": "Doe", "class": "ADV" }] }
-const classArray = [
+
+
+
+
+/// RENDER ///
+
+function App() {
+
+ const [classArray, setClassArray] = React.useState([
   {
     student: {
       first: "Aaron",
@@ -63,12 +69,10 @@ const classArray = [
     },
     id: 3
   },
-];
 
-console.log(classArray);
+ ]);
 
-
-// GET ALL OF THE STUDENTS WHOSE CLASS LEVEL = BEG
+ // GET ALL OF THE STUDENTS WHOSE CLASS LEVEL = BEG
 // FILTER class.level as BEG
 const classBeginners = classArray.filter(
   (p) => p.class.level === "BEG"
@@ -84,9 +88,25 @@ const classAdvanced = classArray.filter(
 
 console.log(classAdvanced);
 
-/// RENDER ///
+function StudentForm(props) {
+  const [first, setFirst] = React.useState()
+  const [last, setLast] = React.useState()
+  const [level, setLevel] = React.useState()
+  const [subject, setSubject] = React.useState()
+  const [id, setId] = React.useState()
 
-function App() {
+  function handleSubmit(e) {
+    e.preventDefault()
+    props.setStudent(prev => prev.concat({first, last, level, subject, id}))
+    setFirst("")
+    setLast("")
+    setLevel("")
+    setSubject("")
+    setId("")
+  }
+
+}
+
   return (
     <div className="App">
       <header className="App-header">
@@ -94,6 +114,10 @@ function App() {
         <div>
         {/* WRAPPING DIV */}
        <div>
+
+         <form onSubmit={handleSubmit}>
+
+           </form>
 
          {/* H1 HEADER FOR ARRAY: classArray*/}
          <h1>ARRAY OF ALL CLASSMATES:</h1>
