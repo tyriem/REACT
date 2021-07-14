@@ -1,7 +1,7 @@
 /// AUTHOR: TMRM
 /// CONTRIBUTORS: @aaronsaunders
 /// PROJECT: Intro to REACT 17-1 - JSON OBJECTS + ARRAYS + STATE
-/// VER: 1.0
+/// VER: 2.0
 /// DATE: 07-XX-2021
 
 
