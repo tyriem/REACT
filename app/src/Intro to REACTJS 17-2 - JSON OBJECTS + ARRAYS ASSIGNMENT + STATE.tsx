@@ -1,6 +1,6 @@
 /// AUTHOR: TMRM
-/// CONTRIBUTORS:   
-/// PROJECT: Intro to REACT 17-1 - JSON OBJECTS + ARRAYS
+/// CONTRIBUTORS: @aaronsaunders
+/// PROJECT: Intro to REACT 17-1 - JSON OBJECTS + ARRAYS + STATE
 /// VER: 1.0
 /// DATE: 07-XX-2021
 
@@ -16,8 +16,9 @@
 //////////////////
 ///    JSON    ///
 ///   OBJECT   ///
-///      &     ///
 ///   ARRAYS   ///
+///     &      ///
+//    STATE    ///
 //////////////////
 
 /// IMPORTS ///
@@ -26,11 +27,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+/// APP COMPONENT ///
 
 export default function App() {
-  // create student array as state because we want changes
-  // to cause screen to re draw
+  // CREATE STUDENT ARRAY AND SET STATE
   const [studentArray, setStudentArray] = React.useState([
+    // FILL ARRAY WITH INITIAL DATA
     {
       studentFirstName: 'Aaron',
       studentLastName: 'Saunders',
@@ -55,12 +57,9 @@ export default function App() {
   ]);
 
 
-  // function that is called when I click on the add button
-  // for the name input field,  it will add the student to the
-  // array
+  // CONST FUNC TO HAND BUTTON CLICK
   const handleBtnClick = student => {
-    // javascript spread operator
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+    // SPREAD OPERATOR (...) TO DISTRIBUTE CHANGING INPUT TO STATES
     setStudentArray([...studentArray, student]);
   };
 
@@ -68,8 +67,10 @@ export default function App() {
 
   return (
     <>
+      {/* FEED handleBtnClick TO FormEntry COMPONENT */}
       <FormEntry handleBtnClick={handleBtnClick} />
 
+      {/* FEED studentArray TO ListDisplay COMPONENT AS listData*/}
       <ListDisplay listData={studentArray} />
     </>
   );
@@ -78,10 +79,10 @@ export default function App() {
 
 /////////////////////////////////////////////////
 
+/// FORM-ENTRY COMPONENT ///
+
 function FormEntry(props) {
-  // this is where the new student name will be contained as
-  // user is typing it, you call setStudentInput to update the
-  // studentInput
+  // COLLECT THE STATE OF THE VALUES AS USER INPUTS
   const [studentFirstInput, setStudentFirstInput] = React.useState();
 
   const [studentLastInput, setStudentLastInput] = React.useState();
@@ -93,7 +94,10 @@ function FormEntry(props) {
   var [counter, setCounter] = React.useState(3);
 
   return (
+// WRAPPER DIV WITH STYLE
     <div style={{ marginTop: 10, padding: 12, border: 'black 1px solid' }}>
+
+      {/* INPUT: STUDENT FIRST NAME */}
       <p>
         <input
           placeholder="Student First Name"
@@ -102,6 +106,7 @@ function FormEntry(props) {
         />
       </p>
 
+      {/* INPUT: STUDENT LAST NAME */}
       <p>
         <input
           placeholder="Student Last Name"
@@ -110,6 +115,7 @@ function FormEntry(props) {
         />
       </p>
 
+      {/* INPUT: STUDENT CLASS */}
       <p>
         <input
           placeholder="Student Class"
@@ -118,6 +124,7 @@ function FormEntry(props) {
         />
       </p>
 
+      {/* INPUT: STUDENT ID */}
       <p>
         <input
           placeholder="ID"
@@ -127,6 +134,7 @@ function FormEntry(props) {
         />
       </p>
 
+      {/* INPUT: STUDENT LEVEL SELECTOR */}
       <p>
         CLASS LEVEL: &nbsp;
         <select
@@ -140,9 +148,8 @@ function FormEntry(props) {
       </p>
 
       <div>
-        {/* // when button clicked, pass the student as a value to the 
-        // props.handleBtnClick function, the appropriate action is 
-        // then taken, see App.js function for additional information */}
+
+        {/* // ONCLICK EVENT TO FEED DATA TO ARRAY & DISPLAY */}
         <button
           onClick={() =>
             props.handleBtnClick(
@@ -167,27 +174,30 @@ function FormEntry(props) {
 
 /////////////////////////////////////////////////
 
+/// LIST-DISPLAY COMPONENT ///
+
 function ListDisplay(props) {
   //
 
+  // FILTER: ALL
   const [classFilter, setClassFilter] = React.useState('ALL');
 
+  // RENDER LIST
   const renderList = () => {
-    // if there is a value other than 'ALL' passed in as classFilter, then
-    // use that value to filter the list... then render the
-    // filtered list
+
+    //RENDER LIST CONDITIONALLY (Ex. BEG OR ADV) BASED ON FILTER
     if (classFilter !== 'ALL') {
       const filteredList = props.listData?.filter(s =>
         s.class.startsWith(classFilter)
       );
+    // MAP THE NEW FILTERED LIST
       return filteredList?.map(s => (
         <li key= {s.id}>
           {s.studentFirstName} : {s.studentLastName} : {s.class} : {s.level} : {s.id}
         </li>
       ));
     } else {
-      // if the value passed in is ALL, then use
-      // the original list
+      // RENDER LIST AS-IS IF FILTER SET TO ALL 
       return props.listData?.map(s => (
         <li key= {s.id}>
           {s.studentFirstName} : {s.studentLastName} : {s.class} : {s.level} : {s.id}
@@ -195,7 +205,8 @@ function ListDisplay(props) {
       ));
     }
   };
-
+  
+  // STYLED LIST FILTER OPTION SELECTION
   return (
     <div style={{ marginTop: 10, padding: 12, border: 'black 1px solid' }}>
       Student List{' '}
