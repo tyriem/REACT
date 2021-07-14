@@ -76,6 +76,14 @@ const classBeginners = classArray.filter(
 
 console.log(classBeginners);
 
+// GET ALL OF THE STUDENTS WHOSE CLASS LEVEL = ADV
+// FILTER class.level as ADV
+const classAdvanced = classArray.filter(
+  (p) => p.class.level === "ADV"
+);
+
+console.log(classAdvanced);
+
 /// RENDER ///
 
 function App() {
@@ -124,6 +132,32 @@ function App() {
                 <br></br>
 
               </div>
+
+              
+            
+            ); })}
+
+       </div>
+
+       <div>
+         {/* H1 HEADER FOR ARRAY: classAdvanced*/}
+       <h1>ARRAY OF CLASSMATES IN THE ADVANCED CLASS:</h1>
+       {/* MAP FOR ARRAY: classAdvanced*/}
+       {classAdvanced.map((classmate) => {
+          return (
+            
+              <div key = {classmate.id}>
+                <div>id: {classmate.id}</div>
+                <div>First Name: {classmate.student.first}</div>
+                <div>Last Name: {classmate.student.last}</div>
+                <div>Class Subject: {classmate.class.subject}</div>
+                <div>Class Level: {classmate.class.level}</div>
+
+                <br></br>
+
+              </div>
+
+              
             
             ); })}
 
