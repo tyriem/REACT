@@ -10,6 +10,7 @@
 // 2) Render the list of elements in an array
 // 3) Class name must be like this BEG - Math, ADV - Math
 // 4) Need to be able to filter the list by BEG or ADV
+// BONUS) Need to be able to input new entries into the array
 ///  OBJECTIVE /// 
 
 //////////////////
@@ -139,7 +140,7 @@ function App() {
         {/* WRAPPING DIV */}
        <div>
 
-       
+       {/* H1 HEADER FOR Form */}
        <h1>FORM FOR ADDING STUDENTS</h1>
         <input placeholder="First Name" value={first|| ''} onChange={handleFirstInput} />
         <input placeholder="Last Name" value={last|| ''} onChange={handleLastInput} />
