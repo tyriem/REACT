@@ -28,7 +28,7 @@ import './App.css';
 /// LOGIC ///
 
 //NB:  JSON OBJECT - SET OF KEYED VALUES WE ACCESS VIA THE KEY AND CAN MANIPULATE
-// JSON OBJECT: classArray
+// JSON OBJECT: classArray = { "Math": [{ "firstName": "John", "lastName": "Doe", "class": "BEG" }, { "firstName": "Jane", "lastName": "Doe", "class": "ADV" }], "Science": [{ "firstName": "John", "lastName": "Doe", "class": "BEG" }, { "firstName": "Jane", "lastName": "Doe", "class": "ADV" }] }
 const classArray = [
   {
     student: {
