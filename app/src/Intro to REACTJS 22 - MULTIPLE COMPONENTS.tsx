@@ -23,6 +23,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+/// FIRST COMPONENT ///
+
 function App() {
   return (
     <div className="App">
@@ -38,4 +40,16 @@ function App() {
   );
 }
 
+// NB: ONLY ONE COMPONENT CAN BE THE EXPORT DEFAULT 
 export default App;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// SECOND COMPONENT ///
+function AdditionalComponent() {
+  return (
+    <div className="AdditionalComponent">
+
+    </div>
+  );
+}
