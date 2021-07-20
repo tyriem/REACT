@@ -27,6 +27,7 @@ import {
   useLocation,
   useParams,
 } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import "./style.css";
 
@@ -44,15 +45,21 @@ export default function App() {
   );
 }
 
-/// HTTP REQUEST ///
-// FETCH DATA FROM API
-const dataArray: any = () => {
-  fetch("https://randomuser.me/api/?results=10")
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-};
-
 function Home() {
+  const [users, setUsers] = useState([]);
+
+  /// HTTP REQUEST - FETCH DATA FROM API
+  const dataArray = () => {
+    fetch("https://randomuser.me/api/?results=10")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  };
+
+  // see documentation - https://reactjs.org/docs/hooks-reference.html#useeffect
+  useEffect(() => {
+    dataArray();
+  }, []);
+
   return (
     <div>
       <h1>DYNAMIC ROUTING</h1>
@@ -60,7 +67,7 @@ function Home() {
       <div>
         <h2>Showing Dynamic Routes</h2>
         {/* MAP ARRAY: dataArray WITH KEY AND SET LINK */}
-        {dataArray.map((i) => (
+        {users.map((i) => (
           <li key={i.id}>
             <Link to={"/detail-page/" + i.id}>
               {i.name} {i.id}
@@ -69,27 +76,5 @@ function Home() {
         ))}
       </div>
     </div>
-  );
-}
-
-// this is the about component
-function DetailPage() {
-  const { userId } = useParams();
-
-  // ALTERATE ASSIGNMENT OF params & userId:
-  // const params = useParams()
-  // const userId = params.userId;
-
-  console.log(userId);
-
-  const user = dataArray[userId];
-
-  return (
-    <>
-      <h2>
-        Details for {user.name} {user.id}
-      </h2>
-      <Link to="/home">BACK</Link>
-    </>
   );
 }
