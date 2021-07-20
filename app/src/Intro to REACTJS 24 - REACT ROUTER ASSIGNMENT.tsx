@@ -49,11 +49,13 @@ class App extends Component {
               <Router>
                 <div>
                   <Link to={"/detail-page/" + person.id}>
-                    <img src={person.picture.large} />
                     <p>
+                      <img src={person.picture.large} />
+                      <br></br>
                       {person.name.first} {person.name.last}
+                      <br></br>
+                      {person.email}
                     </p>
-                    <p>EMAIL: {person.email}</p>
                   </Link>
                   <br></br>
                   <br></br>
