@@ -17,7 +17,7 @@
 /// ASSIGNMENT ///
 //////////////////
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -29,6 +29,8 @@ import {
 } from "react-router-dom";
 
 import "./style.css";
+
+let dataArray = [];
 
 export default function App() {
   return (
@@ -44,28 +46,47 @@ export default function App() {
   );
 }
 
-/// HTTP REQUEST ///
-// FETCH DATA FROM API
-const dataArray: any = () => {
-  fetch("https://randomuser.me/api/?results=10")
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-};
-
 function Home() {
+  const [dataArray, setDataArray] = useState<any>([]);
+
+  /// HTTP REQUEST ///
+  // FETCH DATA FROM API
+  const loadUsers: any = async () => {
+    const response = await fetch("https://randomuser.me/api/?results=10");
+    const o = await response.json();
+    setDataArray(o.results);
+    console.log(o);
+  };
+
+  useEffect((): void => {
+    loadUsers();
+  }, []);
+
   return (
     <div>
       <h1>DYNAMIC ROUTING</h1>
 
       <div>
-        <h2>Showing Dynamic Routes</h2>
         {/* MAP ARRAY: dataArray WITH KEY AND SET LINK */}
-        {dataArray.map((i) => (
-          <li key={i.id}>
-            <Link to={"/detail-page/" + i.id}>
-              {i.name} {i.id}
+        {dataArray?.map((person) => (
+          <div
+            key={person.uuid}
+            style={{ marginTop: 5, padding: 5, border: "black 1px solid" }}
+          >
+            <Link to={"/detail-page/" + person.id}>
+              <img src={person.picture.large} />
+              <br></br>
+              <h2>
+                {person.name.first} {person.name.last}
+              </h2>
+              <h2>{person.email}</h2>
+              <br></br>
+              <br></br>
+              <br></br>
+
+              {/* {JSON.stringify(person,null,2)} */}
             </Link>
-          </li>
+          </div>
         ))}
       </div>
     </div>
