@@ -1,7 +1,7 @@
 /// AUTHOR: TMRM
 /// CONTRIBUTORS:
-/// PROJECT: Intro to REACT 24 - REACT ROUTER ASSIGNMENT
-/// VER: 1.0
+/// PROJECT: Intro to REACT 23 - REACT ROUTER ASSIGNMENT
+/// VER: 2.0
 /// DATE: 07-XX-2021
 
 ///  OBJECTIVE ///
@@ -17,7 +17,8 @@
 /// ASSIGNMENT ///
 //////////////////
 
-import React from "react";
+import * as React from "react";
+import { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -28,53 +29,60 @@ import {
   useParams,
 } from "react-router-dom";
 import { useEffect, useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-import "./style.css";
-
-export default function App() {
-  return (
-    <Router>
-      {/* this means stop as soon as you find a match and */}
-      {/* render it */}
-      <Switch>
-        {/* you might see exact as 'exact={true}', it is */}
-        {/*  the same as the code below */}
-        <Route exact path="/" render={() => <Home />} />
-      </Switch>
-    </Router>
-  );
-}
-
-function Home() {
-  const [users, setUsers] = useState([]);
-
-  /// HTTP REQUEST - FETCH DATA FROM API
-  const dataArray = () => {
-    fetch("https://randomuser.me/api/?results=10")
-      .then((response) => response.json())
-      .then((data) => setUsers(data));
+class App extends Component {
+  state = {
+    pictures: [],
   };
 
-  // see documentation - https://reactjs.org/docs/hooks-reference.html#useeffect
-  useEffect(() => {
-    dataArray();
-  }, []);
+  componentDidMount() {
+    fetch(`https://randomuser.me/api/?results=10`)
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        let pictures = data.results.map((person) => {
+          return (
+            <div key={person.login.uuid}>
+              <Router>
+                <div>
+                  <Link to={"/detail-page/" + person.id}>
+                    <img src={person.picture.large} />
+                    <p>
+                      {person.name.first} {person.name.last}
+                    </p>
+                    <p>EMAIL: {person.email}</p>
+                  </Link>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                </div>
+              </Router>
+            </div>
+          );
+        });
+        this.setState({ pictures: pictures });
+        console.log(this.state.pictures);
+      });
+  }
 
-  return (
-    <div>
-      <h1>DYNAMIC ROUTING</h1>
+  render() {
+    return (
+      <div className="App">
+        {/* HEADER */}
 
-      <div>
-        <h2>Showing Dynamic Routes</h2>
-        {/* MAP ARRAY: dataArray WITH KEY AND SET LINK */}
-        {users.map((i) => (
-          <li key={i.id}>
-            <Link to={"/detail-page/" + i.id}>
-              {i.name} {i.id}
-            </Link>
-          </li>
-        ))}
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>DYNAMIC ROUTES</h2>
+          {/* COMPONENTS */}
+
+          {this.state.pictures}
+        </header>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default App;
